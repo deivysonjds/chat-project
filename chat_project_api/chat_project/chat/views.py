@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from .models import Message
 from .serializers import MessageSerializer
+from .services import generate_response
 
 class UserMessageView(APIView):
     permission_classes = [IsAuthenticated]
@@ -27,16 +28,29 @@ class UserMessageView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        message = Message.objects.create(
+        Message.objects.create(
             user_chat=user,
             text=text,
             is_from_user=True
         )
 
-        return Response({
-            "id": message.id,
-            "user_chat": message.user_chat,
-            "text": message.text,
-            "created_at": message.created_at
-        }, status=status.HTTP_201_CREATED)
+        try:
+            response_gemini = generate_response(text)
+
+            response_database = Message.objects.create(
+                user_chat=user,
+                text=response_gemini,
+                is_from_user=False
+            )
+
+            serializer = MessageSerializer(response_database)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+        except Exception as e:
+            Message.objects.create(
+                user_chat=user,
+                text=f"error: {e}",
+                is_from_user=False
+            )
+            return Response({"error": f"{e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 

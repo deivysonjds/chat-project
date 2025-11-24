@@ -125,6 +125,8 @@ SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
 
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
