@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Chat App",
-  description: "Generated to ",
+  description: "Generated to App created for the full-stack developer position at 4blue.",
 };
 
 export default function RootLayout({
