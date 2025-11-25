@@ -1,5 +1,15 @@
 Chat Project — FullStack [clique aqui para ver](https://chat-project-red-phi.vercel.app/)
 
+para acessar o site, faça login com:
+
+username: user1  
+password: 123456  
+
+ou 
+
+username: user2  
+password: 123456  
+
 📘 Sobre o Projeto
 📌 Visão Geral
 
@@ -313,8 +323,13 @@ NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
 
 Após acessar o site, faça login com:
 
-username: user1 ou user2
-password: 123456
+username: user1  
+password: 123456  
+
+ou 
+
+username: user2  
+password: 123456  
 
 Ao acessar a página "/chat", faça uma pergunta e envie.
 Para visualizar o histórico de mensagens, basta acessar a página "history"
