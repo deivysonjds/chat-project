@@ -29,6 +29,7 @@ Frontend: React + Next.js
          ├── services/
          ├── stores/
 
+
 🖥️ Backend – Python + Django (chat_project_api/)
 
 O backend é responsável pela API REST, autenticação JWT, gerenciamento de usuários e mensagens.
