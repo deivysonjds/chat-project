@@ -1,4 +1,4 @@
-Chat Project — FullStack [chat](https://chat-project-red-phi.vercel.app/)
+Chat Project — FullStack [clique aqui para ver](https://chat-project-red-phi.vercel.app/)
 
 📘 Sobre o Projeto
 📌 Visão Geral
