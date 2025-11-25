@@ -28,9 +28,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY_DJANGO')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEGUB')
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    os.getenv('URL_FRONTEND'),
+    '.onrender.com'
+]
 
 
 # Application definition
@@ -86,12 +89,14 @@ WSGI_APPLICATION = 'chat_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+
+# Deve-se retirar o comentário caso queira rodar localmente com sqlite
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -135,6 +140,8 @@ SIMPLE_JWT = {
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
+
+# Deve-se comentar esse trecho para usar o sqlite
 DATABASES = {
     "default": dj_database_url.config(default=os.getenv("DATABASE_URL"))
 }
