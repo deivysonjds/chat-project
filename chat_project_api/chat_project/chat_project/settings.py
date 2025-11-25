@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
     'chat'
 ]
 
@@ -121,7 +122,7 @@ SIMPLE_JWT = {
 
     "SIGNING_KEY": SECRET_KEY_JWT_ACCESS,
     "REFRESH_SIGNING_KEY": SECRET_KEY_JWT_REFRESH,
-
+    "BLACKLIST_AFTER_ROTATION": True,
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
 
