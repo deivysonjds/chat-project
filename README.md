@@ -1,10 +1,80 @@
-Chat Project — FullStack
+Chat Project — FullStack [chat](https://chat-project-red-phi.vercel.app/)
 
-Este projeto é composto por dois componentes rodando juntos:
+📘 Sobre o Projeto
+📌 Visão Geral
 
-Backend: Python + Django REST Framework
+Este projeto é uma aplicação de chat simples que permite envio de mensagens para um modelo de ia, além de poder acessar o histórico dessas mensagens enviadas e recebidas.
 
-Frontend: React + Next.js
+🎯 Objetivos do Sistema
+
+Envio e recebimento de mensagens de um modelo de IA.
+
+Filtragem de mensagens por usuário logado
+
+
+🏗️ Arquitetura
+
+Backend (Django) → API REST, regras de negócio, banco de dados SQLite localmente e Postegres em Deploy no render.
+
+Frontend (Next.js) → consumo da API, autenticação no navegador
+
+Comunicação via JSON usando Axios
+
+🚀 Principais Tecnologias
+Backend
+
+Django
+
+Django REST Framework
+
+SimpleJWT
+
+PostgreSQL
+
+dj-database-url
+
+Frontend
+
+Next.js
+
+React
+
+TypeScript
+
+Zustand 
+
+Axios 
+
+Zod
+
+🔐 Autenticação
+
+Tokens gerado em /api/token
+
+Token de refresh em /api/token/refresh
+
+Front salva no Cookie e Zustand
+
+Requests enviados com Authorization: Bearer <token>
+
+Middleware para impedir acesso às rotas /chat e /history
+
+💬 Funcionalidades do Chat
+
+Exemplo:
+
+Enviar mensagem
+
+Receber resposta da IA
+
+Buscar mensagens anteriores
+
+
+📦 Deploy
+
+Backend em deploy no render
+
+FrontEnd em deploy no Vercel 
 
 📁 Estrutura do Projeto
 ```
@@ -241,12 +311,12 @@ O frontend usa:
 NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
 
 
-Assim, qualquer requisição será enviada ao backend:
+Após acessar o site, faça login com:
+
+username: user1 ou user2
+password: 123456
+
+Ao acessar a página "/chat", faça uma pergunta e envie.
+Para visualizar o histórico de mensagens, basta acessar a página "history"
 
 
-📌 Resumo
-Parte	Comando
-Instalar backend	pip install -r requirements.txt
-Rodar backend	python manage.py runserver
-Instalar frontend	npm install
-Rodar frontend	npm run dev
