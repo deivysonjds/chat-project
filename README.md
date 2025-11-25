@@ -7,7 +7,7 @@ Backend: Python + Django REST Framework
 Frontend: React + Next.js
 
 📁 Estrutura do Projeto
-
+```
 /chat_project
    ├── chat_project_api/
    |     ├── chat_project/
@@ -28,6 +28,7 @@ Frontend: React + Next.js
          ├── schemas/
          ├── services/
          ├── stores/
+```
 
 
 🖥️ Backend – Python + Django (chat_project_api/)
