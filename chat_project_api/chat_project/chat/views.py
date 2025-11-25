@@ -4,8 +4,10 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from rest_framework_simplejwt.views import TokenObtainPairView
+
 from .models import Message
-from .serializers import MessageSerializer
+from .serializers import MessageSerializer, MyTokenObtainPairSerializer
 from .services import generate_response
 
 class UserMessageView(APIView):
@@ -69,4 +71,7 @@ class LogoutView(APIView):
 
         except Exception:
             return Response({"error": "Refresh token inválido"}, status=status.HTTP_400_BAD_REQUEST)
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
 
