@@ -6,11 +6,13 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Auth, authSchema } from '../schemas/authSchema'
 import { authAPI } from '../services/api'
+import { useTokenState } from '@/stores/tokenStore'
 
 export default function Login() {
   const router = useRouter()
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const {login} = useTokenState()
 
   const {
     register,
@@ -24,7 +26,8 @@ export default function Login() {
     try {
       setIsLoading(true)
       setError('')
-      await authAPI.login(data.username, data.password)
+      let {refresh, access}=await authAPI.login(data.username, data.password)
+      login(access, refresh)
       router.push('/chat')
     } catch (err) {
       setError(`Credenciais inválidas ${err}`)
