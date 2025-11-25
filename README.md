@@ -1,19 +1,30 @@
 Chat Project — FullStack [clique aqui para ver](https://chat-project-red-phi.vercel.app/)
 
-para acessar o site, faça login com:
+clique no link e faça login com um dos dois perfis cadastrados abaixo:
 
+```
 username: user1  
 password: 123456  
-
+```
 ou 
-
+```
 username: user2  
 password: 123456  
+```
+Após o login, faça uma pergunta ao chat.
+Acesse /history para ver o histórico de mensagens
 
 📘 Sobre o Projeto
 📌 Visão Geral
 
-Este projeto é uma aplicação de chat simples que permite envio de mensagens para um modelo de ia, além de poder acessar o histórico dessas mensagens enviadas e recebidas.
+Este projeto é uma aplicação de chat simples que permite envio de mensagens para um modelo de ia, além de poder acessar o histórico dessas mensagens enviadas e recebidas.  
+
+📌 Decisões técnicas
+- O backend possui 2 models; user e message.
+- Foi implementado um sistema de autenticação com refresh token
+- O model message tem os campos user_chat para indicar o usuário que enviou a mensagem registrando seu username nesse campo. Além de ter o campo is_from_user para indicar se a mensagem foi criada pelo usuário ou pelo sistema ( IA )
+- A filtragem das mensagens é feita pelo token do usuário logado, onde foi inserido seu username nos claims, assim o extraindo no backend e fazendo a filtragem a partir disso. Para ver os dados de outro usuário, basta sair e logar com o outro usuário.
+- Para a resposta ao usuário foi usado um modelo gratuito de IA da google ( gemini-2.5-flash )
 
 🎯 Objetivos do Sistema
 
